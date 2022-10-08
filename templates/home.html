@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head_title %}
+{% if user.is_authenticated %}
+    AWM2021 Sample
+{% else %}
+    Home
+{% endif %}
+{% endblock %}
+
+{#{% block content %}#}
+{#{% if user.is_authenticated %}#}
+{#  Hi {{ user.username }}!#}
+{#  <p><a href="{% url 'logout' %}">Log Out</a></p>#}
+{#{% else %}#}
+{#  <p>You are not logged in</p>#}
+{#  <a href="{% url 'login' %}">Log In</a>#}
+{#{% endif %}#}
+{#{% endblock %}#}
+
+{% block login %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a>
+{% endblock %}
+
+{% block logout %}
+    Hi {{ user.username }}!
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% endblock %}
