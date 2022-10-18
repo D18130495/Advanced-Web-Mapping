@@ -16,7 +16,7 @@ import os
 if os.name == 'nt':
     import platform
 
-    OSGEO4W = r"E:\Environment\OSGeo4W64"
+    OSGEO4W = r"E:\Environment\OSGEO4W"
     os.environ['OSGEO4W_ROOT'] = OSGEO4W
     os.environ['GDAL_DATA'] = OSGEO4W + r"\apps\gdal\share\gdal"
     os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
