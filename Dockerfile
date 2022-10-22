@@ -12,6 +12,7 @@ ENV DJANGO_SETTINGS_MODULE=Advanced_Web_Mapping.settings
 
 # Ensure that everything is up-to-date
 RUN apt-get -y update && apt-get -y upgrade
+RUN conda update -n base conda && conda update -n base --all
 
 # Make a working directory in the image and set it as working dir.
 RUN mkdir -p /usr/src/app
@@ -32,8 +33,9 @@ RUN echo "conda activate Advanced_Web_Mapping" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Set up conda to match our test environment
-RUN conda config --add channels conda-forge && conda config --set channel_priority strict && conda update -n base -c defaults conda
-RUN conda install -c conda-forge uwsgi
+RUN conda config --add channels conda-forge && conda config --set channel_priority strict
+RUN cat ~/.condarc
+RUN conda install uwsgi
 
 # Copy everything in your Django project to the image.
 COPY . /usr/src/app
