@@ -99,6 +99,17 @@ DATABASES = {
     },
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'HOST': 'awm2023_deploy',
+#         'PORT': '5432',
+#         'NAME': 'gis',
+#         'USER': 'postgres',
+#         'PASSWORD': '123456'
+#     },
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
