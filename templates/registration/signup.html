@@ -33,21 +33,19 @@
 {% endblock %}
 
 {% block text %}
-    Home Page
+    Sign Up
 {% endblock %}
 
 {% block body_content %}
     <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
-        Welcome to Yushun AWM 2022/23!
+        <h4>Sign Up</h4>
+
+        <form method="post">
+
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-dark">Sign Up</button>
+        </form>
+
+        <p>If you already have an account <a href="/login/"><strong>login</strong></a> instead.</p>
     </div>
 {% endblock %}
-
-{#{% block body_content %}#}
-{#{% if user.is_authenticated %}#}
-{#  Hi {{ user.username }}!#}
-{#  <p><a href="{% url 'logout' %}">Log Out</a></p>#}
-{#{% else %}#}
-{#  <p>You are not logged in</p>#}
-{#  <a href="{% url 'login' %}">Log In</a>#}
-{#{% endif %}#}
-{#{% endblock %}#}

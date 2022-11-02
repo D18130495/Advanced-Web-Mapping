@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.gis.geos import Point
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 from . import models
 
 
@@ -22,3 +25,9 @@ def update_location(request):
         return JsonResponse({"message": f"Set location to{point.wkt}."}, status=200)
     except Exception as e:
         return JsonResponse({"message": str(e)}, status=400)
+
+
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
