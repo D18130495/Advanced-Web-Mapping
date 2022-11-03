@@ -146,7 +146,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # django_project/settings.py
 LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "loggedout"
+LOGOUT_REDIRECT_URL = "logout"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_FAIL_SILENTLY = not DEBUG

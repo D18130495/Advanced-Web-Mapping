@@ -16,16 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
+from django.contrib.auth import views as auth_views
 from awm2023 import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("signup.urls")),
+    path("logout/", auth_views.LogoutView.as_view(template_name="registration/logout.html"), name="logout"),
     path("", include("django.contrib.auth.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
-    path("signup/", TemplateView.as_view(template_name="registration/signup.html"), name="signup"),
     path("login/", TemplateView.as_view(template_name="registration/login.html"), name="login"),
-    path("loggedout/", TemplateView.as_view(template_name="registration/logout.html"), name="loggedout"),
+    path("update-profile/", views.update_profile, name="updateProfile"),
+    path('change-password/', auth_views.PasswordChangeView.as_view(template_name='registration/changePassword.html'),
+         name="changePassword"),
     path("map/", TemplateView.as_view(template_name="map.html"), name="map"),
     path("updatedb/", views.update_location, name="update_db"),
 ]

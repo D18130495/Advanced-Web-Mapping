@@ -1,11 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.gis.geos import Point
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views import generic
 from . import models
+from .form import UserUpdateForm
 
 
 @login_required
@@ -25,3 +23,17 @@ def update_location(request):
         return JsonResponse({"message": f"Set location to{point.wkt}."}, status=200)
     except Exception as e:
         return JsonResponse({"message": str(e)}, status=400)
+
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserUpdateForm(instance=request.user)
+
+    context = {'form': form}
+    return render(request, 'registration/updateProfile.html', context)

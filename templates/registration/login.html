@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
 {% block css %}
     <style>
         .header {
@@ -37,10 +40,13 @@
 {% endblock %}
 
 {% block body_content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-dark">Log In</button>
-</form>
+    <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
+        <h4>Log In</h4>
+
+        <form method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-dark">Log In</button>
+        </form>
+    </div>
 {% endblock %}
