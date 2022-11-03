@@ -1,10 +1,46 @@
- <title>Login</title>
+{% extends 'base.html' %}
 
-{% block content %}
+{% block css %}
+    <style>
+        .header {
+            background-color: #333333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            padding: 5px;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            top: 0;
+            font-size: x-large;
+            vertical-align: center;
+        }
+
+        .footer {
+            background-color: #333333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            padding: 5px;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            bottom: 0;
+            font-size: small;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block text %}
+    Login
+{% endblock %}
+
+{% block body_content %}
 <h2>Log In</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Log In</button>
+  <button type="submit" class="btn btn-dark">Log In</button>
 </form>
 {% endblock %}

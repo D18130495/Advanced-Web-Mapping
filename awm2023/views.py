@@ -25,9 +25,3 @@ def update_location(request):
         return JsonResponse({"message": f"Set location to{point.wkt}."}, status=200)
     except Exception as e:
         return JsonResponse({"message": str(e)}, status=400)
-
-
-class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"

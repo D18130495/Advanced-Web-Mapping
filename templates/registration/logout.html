@@ -33,19 +33,12 @@
 {% endblock %}
 
 {% block text %}
-    Sign Up
+    Logout
 {% endblock %}
 
 {% block body_content %}
     <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
-        <h4>Sign Up</h4>
-
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-dark">Sign Up</button>
-        </form>
-
-        <p>If you already have an account <a href="/login/"><strong>login</strong></a> instead.</p>
+        <p>You are logged out!</p>
+        <a href="/login/">Log in again</a>
     </div>
 {% endblock %}
