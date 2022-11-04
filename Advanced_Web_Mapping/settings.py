@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import socket
+import docker_config
 
 if os.name == 'nt':
     import platform
@@ -29,7 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure--66)l$3pa!$xk$i^@k=^isi-1qns5sv1y!-9)6@d^o7%f)34k^"
+with open('secret_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -63,8 +66,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 ROOT_URLCONF = "Advanced_Web_Mapping.urls"
 
 TEMPLATES = [
@@ -91,8 +92,6 @@ WSGI_APPLICATION = "Advanced_Web_Mapping.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'HOST': 'localhost',
-        'PORT': '25432',
         'NAME': 'gis',
         'USER': 'postgres',
         'PASSWORD': '123456'
@@ -136,8 +135,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "/static/"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = "/static/"
+
+if socket.gethostname() == "192.168.192.1":
+    DATABASES["default"]["HOST"] = "localhost"
+    DATABASES["default"]["PORT"] = docker_config.POSTGIS_PORT
+else:
+    DATABASES["default"]["HOST"] = docker_config.CLOUD_POSTGIS_HOST
+    DATABASES["default"]["PORT"] = docker_config.CLOUD_POSTGIS_PORT
+
+# Set DEPLOY_SECURE to True only for LIVE deployment
+if docker_config.DEPLOY_SECURE:
+    DEBUG = False
+    TEMPLATES[0]["OPTIONS"]["debug"] = False
+    ALLOWED_HOSTS = ['www.awm2023.site', '63.35.221.13', '127.0.0.1']
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+else:
+    DEBUG = True
+    TEMPLATES[0]["OPTIONS"]["debug"] = True
+    ALLOWED_HOSTS = ['*', ]
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

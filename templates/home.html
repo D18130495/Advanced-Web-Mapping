@@ -37,17 +37,15 @@
 {% endblock %}
 
 {% block body_content %}
-    <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
+    <div id="body_div" style="padding: 1rem; width: 100%; position: relative">
         Welcome to Yushun AWM 2022/23!
     </div>
 {% endblock %}
 
-{#{% block body_content %}#}
-{#{% if user.is_authenticated %}#}
-{#  Hi {{ user.username }}!#}
-{#  <p><a href="{% url 'logout' %}">Log Out</a></p>#}
-{#{% else %}#}
-{#  <p>You are not logged in</p>#}
-{#  <a href="{% url 'login' %}">Log In</a>#}
-{#{% endif %}#}
-{#{% endblock %}#}
+{% block extra_footer %}
+    <script>
+        $("#body_div").css({
+            "top": $("#header").height() + 10, "position": "absolute"
+        });
+    </script>
+{% endblock %}

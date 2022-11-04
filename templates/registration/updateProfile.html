@@ -40,7 +40,7 @@
 {% endblock %}
 
 {% block body_content %}
-    <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
+    <div id="body_div" style="padding: 1rem; width: 100%; position: relative">
         <h4>Update details</h4>
 
         <form method="post" enctype="multipart/form-data">
@@ -49,4 +49,12 @@
             <button type="submit" class="btn btn-dark">Update</button>
         </form>
     </div>
+{% endblock %}
+
+{% block extra_footer %}
+    <script>
+        $("#body_div").css({
+            "top": $("#header").height() + 10, "position": "absolute"
+        });
+    </script>
 {% endblock %}

@@ -12,7 +12,7 @@
  Target Server Version : 130003
  File Encoding         : 65001
 
- Date: 22/10/2022 18:44:27
+ Date: 04/11/2022 13:49:44
 */
 
 
@@ -44,12 +44,13 @@ CACHE 1
 -- ----------------------------
 -- Records of auth_user
 -- ----------------------------
-INSERT INTO "public"."auth_user" VALUES (1, 'pbkdf2_sha256$390000$8buwP88AeGkwhOZi7xbSvU$qg2lz93kvfir9WUAuaBZtH8rn39C318vCECoyF5BOnI=', '2022-10-22 17:03:12.61992+00', 't', 'yushun', '', '', 'd18130495@mytudublin.ie', 't', 't', '2022-10-18 13:52:31.547603+00');
+INSERT INTO "public"."auth_user" VALUES (1, 'pbkdf2_sha256$390000$8buwP88AeGkwhOZi7xbSvU$qg2lz93kvfir9WUAuaBZtH8rn39C318vCECoyF5BOnI=', '2022-11-03 12:21:42.326535+00', 't', 'yushun', '', '', 'd18130495@mytudublin.ie', 't', 't', '2022-10-18 13:52:31.547603+00');
+INSERT INTO "public"."auth_user" VALUES (2, 'pbkdf2_sha256$390000$wY7ukr7Ax3m3oxqFgD8jYy$pDEEvArD22Q4YPVDjHN7EgaL5w3+xoC9AxVrp6n9ieI=', '2022-11-04 13:38:50.696882+00', 'f', 'Alex', '', '', '', 'f', 't', '2022-11-02 23:17:28.615988+00');
 
 -- ----------------------------
 -- Auto increment value for auth_user
 -- ----------------------------
-SELECT setval('"public"."auth_user_id_seq"', 1, true);
+SELECT setval('"public"."auth_user_id_seq"', 2, true);
 
 -- ----------------------------
 -- Indexes structure for table auth_user

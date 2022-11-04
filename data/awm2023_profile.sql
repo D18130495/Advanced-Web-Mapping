@@ -12,7 +12,7 @@
  Target Server Version : 130003
  File Encoding         : 65001
 
- Date: 22/10/2022 18:44:46
+ Date: 04/11/2022 13:49:59
 */
 
 
@@ -38,12 +38,13 @@ CACHE 1
 -- ----------------------------
 -- Records of awm2023_profile
 -- ----------------------------
-INSERT INTO "public"."awm2023_profile" VALUES (1, '2022-10-18 13:52:31.651098+00', '2022-10-22 17:03:12.75792+00', '0101000020E61000007978CF81E50819C0AC3C81B053AC4A40', 1);
+INSERT INTO "public"."awm2023_profile" VALUES (2, '2022-11-02 23:17:28.762489+00', '2022-11-04 13:38:50.748899+00', '0101000020E6100000583849F3C70C19C0A41D92B5E1A44A40', 2);
+INSERT INTO "public"."awm2023_profile" VALUES (1, '2022-10-18 13:52:31.651098+00', '2022-11-03 13:24:50.037267+00', '0101000020E61000000FD02280400C19C0B9D1B650E8AB4A40', 1);
 
 -- ----------------------------
 -- Auto increment value for awm2023_profile
 -- ----------------------------
-SELECT setval('"public"."awm2023_profile_id_seq"', 1, true);
+SELECT setval('"public"."awm2023_profile_id_seq"', 2, true);
 
 -- ----------------------------
 -- Indexes structure for table awm2023_profile

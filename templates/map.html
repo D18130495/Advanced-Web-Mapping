@@ -42,25 +42,24 @@
     Map
 {% endblock %}
 
-{% block head_title %}{% trans "Map Page" %}{% endblock %}
-
-{% block extra_header %}
-<style>
-    #map {
-        width: 100vw;
-        height: 100vh;
-    }
-</style>
-{% endblock %}
-
 {% block body_content %}
-     <h3>{% trans "Map" %}</h3>
-     <div style="width: 100%">
+      <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
          {% leaflet_map "map" callback="window.map_init_basic" %}
      </div>
 {% endblock %}
 
 {% block extra_footer %}
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        <div class="toast-header">
+            <strong class="me-auto">AWM2023</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+
+        <div class="toast-body"></div>
+    </div>
+
     <script>
         var HOST = location.protocol + "//" + location.host;
         var locationMarker;
@@ -69,6 +68,14 @@
         $("#map").css({
             "width": "100%",
             "height": $(document).height() - ($("#header").height() + $("#footer").height() + 45)
+        });
+
+        $(".toast").css({
+            "top": (($(document).height() / 2) - ($(".toast").height() / 2)),
+            "left": (($(document).width() / 2) - ($(".toast").width() / 2)),
+            "position": "fixed",
+            "z-index": 2000,
+            "max-width": $("#header").width() / 2
         });
 
         function getCookie(name) {
@@ -82,7 +89,6 @@
                     // Does this cookie string begin with the name we want?
                     if (cookie.substring(0, name.length + 1) === (name + '=')) {
                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-
                         break;
                     }
                 }
@@ -92,7 +98,7 @@
         }
 
         function map_init_basic(map, options) {
-            map.setView([53.5, -8.5], 11);
+            map.setView([53.5, -8.5], 6);
             updateLocation(map);
             map.on('touchstart click dblclick ', function () {
                 updateLocation(map);

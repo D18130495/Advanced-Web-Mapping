@@ -20,7 +20,7 @@ def update_location(request):
         user_profile.last_location = point
         user_profile.save()
 
-        return JsonResponse({"message": f"Set location to{point.wkt}."}, status=200)
+        return JsonResponse({"message": f"Updated {request.user.username} with {point.wkt}."}, status=200)
     except Exception as e:
         return JsonResponse({"message": str(e)}, status=400)
 

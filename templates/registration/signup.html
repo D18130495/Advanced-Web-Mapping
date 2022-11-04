@@ -40,7 +40,7 @@
 {% endblock %}
 
 {% block body_content %}
-    <div id="body_div" style="padding: 1rem; width: 100%; top: 50px; position: relative">
+    <div id="body_div" style="padding: 1rem; width: 100%; position: relative">
         <h4>Sign Up</h4>
 
         <form method="post">
@@ -49,6 +49,15 @@
             <button type="submit" class="btn btn-dark">Sign Up</button>
         </form>
 
+        <p>&nbsp;</p>
         <p>If you already have an account <a href="/login/"><strong>login</strong></a> instead.</p>
     </div>
+{% endblock %}
+
+{% block extra_footer %}
+    <script>
+        $("#body_div").css({
+            "top": $("#header").height() + 10, "position": "absolute"
+        });
+    </script>
 {% endblock %}
