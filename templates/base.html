@@ -33,11 +33,11 @@
                    </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a id="show-home-page" class="dropdown-item" href="/">Home</a>
-                        <a id="show-map-page" class="dropdown-item valid-user" href="/map/">Map</a>
-                        <a id="show-change-user-page" class="dropdown-item valid-user" href="/update-profile/">Update Profile</a>
-                        <a id="show-change-password-page" class="dropdown-item valid-user" href="/change-password/">Change Password</a>
-                        <a id="show-logout" class="dropdown-item valid-user" href="/logout/">Log Out</a>
+                        <a id="show-home-page" class="dropdown-item" href={% url 'home' %}>Home</a>
+                        <a id="show-map-page" class="dropdown-item valid-user" href={% url 'map' %}>Map</a>
+                        <a id="show-change-user-page" class="dropdown-item valid-user" href={% url 'updateProfile' %}>Update Profile</a>
+                        <a id="show-change-password-page" class="dropdown-item valid-user" href={% url 'changePassword' %}>Change Password</a>
+                        <a id="show-logout" class="dropdown-item valid-user" href={% url 'logout' %}>Log Out</a>
                     </div>
                 </div>
 
@@ -49,9 +49,9 @@
                    </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a id="show-home-page" class="dropdown-item" href="/">Home</a>
-                        <a id="show-login-page" class="dropdown-item no-user" href="/login/">Log In</a>
-                        <a id="show-signup-page" class="dropdown-item no-user" href="/signup/">Sign Up</a>
+                        <a id="show-home-page" class="dropdown-item" href={% url 'home' %}>Home</a>
+                        <a id="show-login-page" class="dropdown-item no-user" href={% url 'login' %}>Log In</a>
+                        <a id="show-signup-page" class="dropdown-item no-user" href={% url 'signup' %}>Sign Up</a>
                     </div>
                 </div>
             {% endif %}
@@ -60,7 +60,7 @@
         {% block body_content %}{% endblock %}
 
         <footer id="footer" class="footer">
-            Yushun Zeng 2022 | Awm2022/23 Django Map
+            Yushun Zeng 2022 | Awm2022/23 Django Map | <a href="https://github.com/D18130495/Advanced-Web-Mapping" target="_blank">Github</a>
         </footer>
 
         {% block extra_footer %}{% endblock %}
