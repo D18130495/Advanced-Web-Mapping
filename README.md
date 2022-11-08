@@ -1,4 +1,5 @@
 # Advanced-Web-Mapping
-Django GIS
+## Documentation
+Deployment process: [Deployment Process](docs/Deploy%20Instruction.pdf)
 
 
