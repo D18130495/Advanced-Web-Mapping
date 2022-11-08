@@ -5,7 +5,7 @@
 # Start from an existing image with Miniconda installed
 FROM continuumio/miniconda3
 
-MAINTAINER Mark Foley
+MAINTAINER Yushun Zeng
 
 ENV PYTHONUNBUFFERED 1
 ENV DJANGO_SETTINGS_MODULE=Advanced_Web_Mapping.settings
