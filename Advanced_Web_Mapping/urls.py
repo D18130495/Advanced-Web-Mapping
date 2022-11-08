@@ -23,6 +23,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("signup.urls")),
     path("logout/", auth_views.LogoutView.as_view(template_name="registration/logout.html"), name="logout"),
+    path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(
+        template_name='registration/changePasswordDone.html'), name="changePasswordDone"),
     path("", include("django.contrib.auth.urls")),
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
     path("login/", TemplateView.as_view(template_name="registration/login.html"), name="login"),
